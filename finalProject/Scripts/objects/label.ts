@@ -5,7 +5,7 @@
     //<!--Last Modified Date: 12 - Nov - 2015 -- >
     //<!--Last Modified by: Liliya Artyukh -- >
 
-module objects {
+module finalProject {
     // LABEL CLASS ++++++++++++++++++++++++++++++++++++++++
     export class Label extends createjs.Text {
         // CONSTRUCTOR METHOD ++++++++++++++++++++++++++++++++

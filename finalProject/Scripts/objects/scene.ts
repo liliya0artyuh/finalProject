@@ -6,7 +6,7 @@
     //<!--Last Modified Date: 12 - Nov - 2015 -- >
 //<!--Last Modified by: Liliya Artyukh -- >
 
-module objects {
+module finalProject {
     //declare the scene class
     export class Scene extends createjs.Container {
         //constructor

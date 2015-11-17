@@ -5,7 +5,7 @@
     //<!--Last Modified Date: 12 - Nov - 2015 -- >
     //<!--Last Modified by: Liliya Artyukh -- >
 
-module objects {
+module finalProject {
     export class Scoreboard {
 
         //PUBLIC PROPERTIES
@@ -13,16 +13,16 @@ module objects {
         lives: number = 3;
 
         //PRIVATE PROPERTIES
-        private _scoreLabel: objects.Label;
-        private _livesLabel: objects.Label;
+        private _scoreLabel: finalProject.Label;
+        private _livesLabel: finalProject.Label;
 
         //CONSTRUCTOR++++++++++++++++++++++++++++++++++
         constructor() {
 
-            this._scoreLabel = new objects.Label("Score: ", "40px Consolas", "#FFF000", 10, 10, false);
+            this._scoreLabel = new finalProject.Label("Score: ", "40px Consolas", "#FFF000", 10, 10, false);
             stage.addChild(this._scoreLabel);
 
-            this._livesLabel = new objects.Label("Lives: ", "40px Consolas", "#FFF000", 300, 10, false);
+            this._livesLabel = new finalProject.Label("Lives: ", "40px Consolas", "#FFF000", 300, 10, false);
             stage.addChild(this._livesLabel);
         }
 

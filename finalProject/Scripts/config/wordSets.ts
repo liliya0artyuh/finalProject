@@ -5,7 +5,7 @@
     //<!--Last Modified Date: 12 - Nov - 2015 -- >
 //<!--Last Modified by: Liliya Artyukh -- >
 
-module config {
+module finalProject {
 
     //word sets
     export var foodWords: string[] = ["apple", "potato", "onion", "pear", "rice", "bread", "beef", "cheese", "milk", "juice"];

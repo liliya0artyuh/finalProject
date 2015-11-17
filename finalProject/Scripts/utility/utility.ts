@@ -1,4 +1,4 @@
-﻿module utility {
+﻿module finalProject {
 
       //distance utility method
     export function distance(p1: createjs.Point, p2: createjs.Point): number {

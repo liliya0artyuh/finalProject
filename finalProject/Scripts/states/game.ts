@@ -5,14 +5,14 @@
     //<!--Last Modified Date: 12 - Nov - 2015 -- >
     //<!--Last Modified by: Liliya Artyukh -- >
 
-module states {
+module finalProject {
     // menu class
-    export class Game extends objects.Scene {
+    export class Game extends finalProject.Scene {
         // private instance variables
-        _textLabel: objects.Label;
-       _truck: objects.Truck;
-        _word: objects.Word;
-        _antiWords: objects.Word[] = [];
+        _textLabel: finalProject.Label;
+        _truck: finalProject.Truck;
+        _word: finalProject.Word;
+        _antiWords: finalProject.Word[] = [];
         _currentWord: string;
         _wordOrder: number[] = [0];
         _category: string;
@@ -33,16 +33,16 @@ module states {
 
 
             //add truck/collector to the game
-            this._truck = new objects.Truck("truck");
+            this._truck = new finalProject.Truck("truck");
             this.addChild(this._truck);
 
             //add selected category finalProject
-            this._word = new objects.Word(true);// collectibe word
+            this._word = new finalProject.Word(true);// collectibe word
             this.addChild(this._word);
 
             //add enemy finalProject
-            for (var antiWord = 0; antiWord < config.numOfAntiWords; antiWord++) {
-                this._antiWords[antiWord] = new objects.Word(false);// antogonist finalProject
+            for (var antiWord = 0; antiWord < finalProject.numOfAntiWords; antiWord++) {
+                this._antiWords[antiWord] = new finalProject.Word(false);// antogonist finalProject
                 this.addChild(this._antiWords[antiWord]);
             }
 
@@ -50,8 +50,8 @@ module states {
             //add all objects to the stage
             stage.addChild(this);
 
-            scoreboard = new objects.Scoreboard;
-            collision = new managers.Collision; 
+            scoreboard = new finalProject.Scoreboard;
+            collision = new finalProject.Collision; 
         }
 
 
@@ -92,27 +92,27 @@ module states {
      private  _determineCategories(): void {
         console.log("wordCategory " + wordCategory);
         if (wordCategory == "foodBtn") {
-            config.currentCategory = config.foodWords;
-            config.antagonistWords = config.furnitureWords;
-            Array.prototype.push.apply(config.antagonistWords, config.clothesWords);
-            Array.prototype.push.apply(config.antagonistWords, config.animalsWords);
-            console.log("this._currentCategory " + config.currentCategory);
-            console.log("this._antagonistWords " + config.antagonistWords);
+            finalProject.currentCategory = finalProject.foodWords;
+            finalProject.antagonistWords = finalProject.furnitureWords;
+            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.clothesWords);
+            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.animalsWords);
+            console.log("this._currentCategory " + finalProject.currentCategory);
+            console.log("this._antagonistWords " + finalProject.antagonistWords);
         } else if (wordCategory == "furnitureBtn") {
-            config.currentCategory = config.furnitureWords;
-            config.antagonistWords = config.foodWords;
-            Array.prototype.push.apply(config.antagonistWords, config.clothesWords);
-            Array.prototype.push.apply(config.antagonistWords, config.animalsWords);
+            finalProject.currentCategory = finalProject.furnitureWords;
+            finalProject.antagonistWords = finalProject.foodWords;
+            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.clothesWords);
+            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.animalsWords);
         } else if (wordCategory == "clothesBtn") {
-            config.currentCategory = config.clothesWords;
-            config.antagonistWords = config.furnitureWords;
-            Array.prototype.push.apply(config.antagonistWords, config.foodWords);
-            Array.prototype.push.apply(config.antagonistWords, config.animalsWords);
+            finalProject.currentCategory = finalProject.clothesWords;
+            finalProject.antagonistWords = finalProject.furnitureWords;
+            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.foodWords);
+            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.animalsWords);
         } else if (wordCategory == "animalsBtn") {
-            config.currentCategory = config.animalsWords;
-            config.antagonistWords = config.furnitureWords;
-            Array.prototype.push.apply(config.antagonistWords, config.clothesWords);
-            Array.prototype.push.apply(config.antagonistWords, config.foodWords);
+            finalProject.currentCategory = finalProject.animalsWords;
+            finalProject.antagonistWords = finalProject.furnitureWords;
+            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.clothesWords);
+            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.foodWords);
         }
     }
 
@@ -122,7 +122,7 @@ module states {
         public update(): void {
             this._truck.update();
             this._word.update();
-            for (var antiWord = 0; antiWord < config.numOfAntiWords; antiWord++) {
+            for (var antiWord = 0; antiWord < finalProject.numOfAntiWords; antiWord++) {
                 this._antiWords[antiWord].update();
                 collision.check(this._antiWords[antiWord], this._truck);
             }
@@ -132,13 +132,13 @@ module states {
                 outcome = 2;
                 numOfCollectedWords = scoreboard.score / 100;
                 numOfLivesLost = 3;
-                changeState(config.OVER_STATE);
+                changeState(finalProject.OVER_STATE);
             }
                 if(scoreboard.score == 1000) {
                     outcome = 1;
                     numOfCollectedWords = 10;
                     numOfLivesLost = 3 - scoreboard.lives;
-                    changeState(config.OVER_STATE);
+                    changeState(finalProject.OVER_STATE);
             }
         }
     }

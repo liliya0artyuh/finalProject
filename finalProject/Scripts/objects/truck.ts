@@ -5,7 +5,7 @@
     //<!--Last Modified Date: 12 - Nov - 2015 -- >
 //<!--Last Modified by: Liliya Artyukh -- >
 
-module objects {
+module finalProject {
     //Truck class ---------------------------------------------
     export class Truck extends createjs.Bitmap {
 

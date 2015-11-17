@@ -5,7 +5,7 @@
     //<!--Last Modified Date: 12 - Nov - 2015 -- >
     //<!--Last Modified by: Liliya Artyukh -- >
 
-module objects {
+module finalProject {
     export class Button extends createjs.Bitmap {
         //private instance variables
         width: number;

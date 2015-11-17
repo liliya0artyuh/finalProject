@@ -6,7 +6,7 @@
 //<!--Last Modified by: Liliya Artyukh -- >
 
 
-module objects {
+module finalProject {
 
     export class Word extends createjs.Text {
 
@@ -69,10 +69,10 @@ module objects {
         public _reset(): void {
             this._determineNextWord();
             if (this._currentWord) {
-                this.text = config.currentCategory[this._currentWordItem];
+                this.text = finalProject.currentCategory[this._currentWordItem];
             } else {
                 // for (var antiWord = 0; antiWord < config.numOfAntiWords; antiWord++) {
-                this.text = config.antagonistWords[this._antiWordItem];// antogonist finalProject
+                this.text = finalProject.antagonistWords[this._antiWordItem];// antogonist finalProject
                 //   }
             }
             this._dx = (Math.random() * (1.5 - 0.5 + 0.5) + 0.5);//sets random speed between 1 and 2

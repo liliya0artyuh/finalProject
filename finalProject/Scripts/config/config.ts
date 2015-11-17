@@ -5,12 +5,13 @@
     //<!--Last Modified Date: 12 - Nov - 2015 -- >
 //<!--Last Modified by: Liliya Artyukh -- >
 
-module config {
+module finalProject {
 
     // state constants
     export var MENU_STATE: number = 0;
     export var PLAY_STATE: number = 1;
     export var OVER_STATE: number = 2;
+    export var INSTRUCTIONS_STATE: number = 3;
     export var numOfAntiWords: number = 3;
     export var centerX: number = 424;
     export var collectorWidth: number = 227;

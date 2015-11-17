@@ -5,7 +5,7 @@
     //<!--Last Modified Date: 12 - Nov - 2015 -- >
 //<!--Last Modified by: Liliya Artyukh -- >
 
-module managers {
+module finalProject {
     export class Asset {
         //PUBLIC PROPERTIES 
         public loader: createjs.LoadQueue;

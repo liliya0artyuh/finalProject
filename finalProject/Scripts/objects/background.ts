@@ -6,7 +6,7 @@
     //<!--Last Modified Date: 12 - Nov - 2015 -- >
 //<!--Last Modified by: Liliya Artyukh -- >
 
-module objects {
+module finalProject {
     //Background class ---------------------------------------------
     export class Background extends createjs.Bitmap {
 
