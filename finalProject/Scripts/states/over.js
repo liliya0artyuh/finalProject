@@ -30,24 +30,25 @@ var finalProject;
             scoreboard.reset();
             //instantiate and add a logo
             this._logo = new createjs.Bitmap(assets.loader.getResult("logo"));
-            // this._logo.regX = this._logo.getBounds().width * 0.5;
-            this._logo.x = finalProject.centerX - (146 * 0.5);
-            this._logo.y = 30;
+            this._logo.x = finalProject.centerX - (146 * 0.5); //position logo in the center of x axis
+            this._logo.y = 30; //position logo at 30 below top (alog y axis)
             this.addChild(this._logo);
             if (outcome == 1) {
-                this._outcomeText = "Well Done! You have collected 10 finalProject from the selected category";
+                this._outcomeText = "Well Done! You have collected 10 words from the selected category";
             }
             if (outcome == 2) {
-                this._outcomeText = "Good try! Study the finalProject and play the game again.";
+                this._outcomeText = "Good try! Study the words and play the game again.";
             }
             this._outcomeLabel = new finalProject.Label(this._outcomeText, "18px Consolas", "#ffffff", finalProject.centerX, 140, true);
             this.addChild(this._outcomeLabel);
-            this._finalScore = new finalProject.Label("collected finalProject: " + numOfCollectedWords + "\n\n lost lives: " + numOfLivesLost, "20px Consolas", "#FFF000", finalProject.centerX, 200, true);
+            this._finalScore = new finalProject.Label("collected words: " + numOfCollectedWords + "\n\nlost lives: " + numOfLivesLost, "20px Consolas", "#FFF000", finalProject.centerX, 200, true);
             this.addChild(this._finalScore);
             this._endLabel = new finalProject.Label("The End", "30px Consolas", "#ffffff", finalProject.centerX, 260, true);
             this.addChild(this._endLabel);
             //instantiate and add a start button
-            this._againButton = new finalProject.Button("againButton", finalProject.centerX, 360, true);
+            this._againButton = new finalProject.Button("againButton", finalProject.centerX, 360);
+            this._againButton.setWidth(206);
+            this._againButton.centerAlongX();
             this.addChild(this._againButton);
             this._againButton.on("click", this._buttonClicked, this);
             stage.addChild(this);

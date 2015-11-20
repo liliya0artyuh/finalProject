@@ -8,25 +8,43 @@
 module finalProject {
     export class Button extends createjs.Bitmap {
         //private instance variables
-        width: number;
-        height: number;
+        _width: number;
+        _height: number;
         //constructor
-        constructor(pathString: string, x: number, y: number, centered: boolean) {
+        constructor(pathString: string, x: number, y: number) {
             super(assets.loader.getResult(pathString));
+            this._height = 69;
 
             this.x = x;
             this.y = y;
 
-            if (centered) {
-                this.width = 208;
-                this.height = 69;
-
-                this.regX = this.width * 0.5;
-                this.regY = this.height * 0.5;
-            }
             this.on("mouseover", this.buttonOver, this);
             this.on("mouseout", this.buttonOut, this);
 
+        }
+
+        //public methods
+        public getWidth(): number {
+            return this._width;
+        }
+
+        public setWidth(width: number): void {
+            this._width = width;
+        }
+        public getHeight(): number {
+            return this._height;
+        }
+
+        public setHeight(height: number): void {
+            this._height = height;
+        }
+
+        //private methods
+        public centerAlongX(): void {
+            this.regX = this._width * 0.5;
+        }
+        public centerAlongY(): void {
+            this.regY = this._height * 0.5;
         }
         //callback function that change the apha transparency of the button
         //mousover event
@@ -38,8 +56,5 @@ module finalProject {
         buttonOut(event: createjs.MouseEvent): void {
             event.currentTarget.alpha = 1.0;
         }
-
-        
-
     }
 }

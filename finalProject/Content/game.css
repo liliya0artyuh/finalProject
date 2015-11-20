@@ -44,7 +44,7 @@ display: none;
 #txtName {
     position: absolute;
     display: none;
-    top: 110px;
+    top: 140px;
     right: 300px;
     z-index: 101;
     width: 150px;

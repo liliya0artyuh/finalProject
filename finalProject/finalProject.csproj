@@ -77,6 +77,8 @@
     <Content Include="Assets\images\back1.PNG" />
     <Content Include="Assets\images\back_long.png" />
     <Content Include="Assets\images\button183x82.png" />
+    <Content Include="Assets\images\categoryButton.PNG" />
+    <Content Include="Assets\images\continueButton.png" />
     <Content Include="Assets\images\logo.PNG" />
     <Content Include="Assets\images\rules.png" />
     <Content Include="Assets\images\saveButton.png" />

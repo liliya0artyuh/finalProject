@@ -18,12 +18,11 @@ var finalProject;
         function Menu() {
             _super.call(this);
             this._instructionsVisible = false;
-            this._aboutText = "This game is designed to help people learn English finalProject in a fun way. \n\nThe goal of the game is to collect 10 finalProject from selected category.";
-            this._rulesText = "1. Select word category to practise. \n\n2. Move mouse up and down to control collector rectangle. \n\n3. Collect 10 finalProject from selected category to win. \n\n4. Collecting 3 wrong finalProject lead to a loss.";
+            this._aboutText = "This game is designed to help people learn English words in a fun way. \n\nThe goal of each level is to collect words from the selected category. \n\nThere are three levels altogether. \n\nThe instructions for each level will be available just before the \n\nlevel starts.";
         }
         //private method
         //callback function that allows to respond to start button click events
-        Menu.prototype._startClicked = function (event) {
+        Menu.prototype._continueClicked = function (event) {
             console.log("event.target " + event.target);
             createjs.Sound.play("soundtrack");
             changeState(finalProject.INSTRUCTIONS_STATE);
@@ -39,12 +38,7 @@ var finalProject;
             }
             //check which button was clicked
             console.log("event.target.name " + event.target.name);
-            if (event.target.name == "aboutBtn") {
-                this._instructionsLable.text = this._aboutText;
-            }
-            else if (event.target.name == "rulesBtn") {
-                this._instructionsLable.text = this._rulesText;
-            }
+            this._instructionsLable.text = this._aboutText;
         };
         Menu.prototype._categoryClicked = function (event) {
             wordCategory = event.target.name;
@@ -59,12 +53,10 @@ var finalProject;
         //public methods
         Menu.prototype.start = function () {
             this.addChild(background);
-            //add buttons for about and rules
-            this._rulesButton = new finalProject.Button("rulesButton", 200, 150, false);
-            this._rulesButton.name = "rulesBtn";
-            this._rulesButton.on("click", this._menuClicked, this);
-            this.addChild(this._rulesButton);
-            this._aboutButton = new finalProject.Button("aboutButton", 440, 150, false);
+            //add button for about 
+            this._aboutButton = new finalProject.Button("aboutButton", finalProject.centerX, 150);
+            this._aboutButton.setWidth(183);
+            this._aboutButton.centerAlongX();
             this._aboutButton.name = "aboutBtn";
             this._aboutButton.on("click", this._menuClicked, this);
             this.addChild(this._aboutButton);
@@ -73,7 +65,7 @@ var finalProject;
             this._instructionsContainer.x = 24;
             this._instructionsContainer.y = 200;
             this._rect = new createjs.Shape;
-            this._rect.graphics.beginFill("red").drawRect(0, 0, 800, 150);
+            this._rect.graphics.beginFill("red").drawRect(0, 0, 800, 180);
             this._instructionsContainer.addChild(this._rect);
             this._instructionsLable = new finalProject.Label("placeholder text", "20px Consolas", "#000000", 20, 20, false);
             this._instructionsContainer.addChild(this._instructionsLable);
@@ -88,9 +80,11 @@ var finalProject;
             //add logo to game container
             this.addChild(this._logo);
             //instantiate and add a start button
-            this._startButton = new finalProject.Button("startButton", finalProject.centerX, 420, true);
-            this.addChild(this._startButton);
-            this._startButton.on("click", this._startClicked, this);
+            this._continueButton = new finalProject.Button("continueButton", finalProject.centerX, 390);
+            this._continueButton.setWidth(206);
+            this._continueButton.centerAlongX();
+            this.addChild(this._continueButton);
+            this._continueButton.on("click", this._continueClicked, this);
             //add this menu container to the stage
             stage.addChild(this);
         };
