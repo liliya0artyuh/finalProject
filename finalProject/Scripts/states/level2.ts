@@ -1,13 +1,13 @@
-﻿    //<!--Repository Name for source code on github: finalProject-- >
-    //<!--Description: A game that allows to users practise with memorising English finalProject in different categories in a fun manner -- >
-    //<!--Author Name: Liliya Artyukh -- >
-    //<!--Creation Date: 06 - Nov - 2015 -- >
-    //<!--Last Modified Date: 12 - Nov - 2015 -- >
-    //<!--Last Modified by: Liliya Artyukh -- >
+﻿//<!--Repository Name for source code on github: finalProject-- >
+//<!--Description: A game that allows to users practise with memorising English finalProject in different categories in a fun manner -- >
+//<!--Author Name: Liliya Artyukh -- >
+//<!--Creation Date: 06 - Nov - 2015 -- >
+//<!--Last Modified Date: 12 - Nov - 2015 -- >
+//<!--Last Modified by: Liliya Artyukh -- >
 
 module finalProject {
     // menu class
-    export class Game extends finalProject.Scene {
+    export class Level2 extends finalProject.Scene {
         // private instance variables
         _textLabel: finalProject.Label;
         _truck: finalProject.Truck;
@@ -51,7 +51,7 @@ module finalProject {
             stage.addChild(this);
 
             scoreboard = new finalProject.Scoreboard;
-            collision = new finalProject.Collision; 
+            collision = new finalProject.Collision;
         }
 
 
@@ -88,35 +88,35 @@ module finalProject {
             return this.nextItem;
         }
         */
-                    //determine categories for collectible finalProject and the antagonist finalProject
-     private  _determineCategories(): void {
-        console.log("wordCategory " + wordCategory);
-        if (wordCategory == "foodBtn") {
-            finalProject.currentCategory = finalProject.foodWords;
-            finalProject.antagonistWords = finalProject.furnitureWords;
-            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.clothesWords);
-            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.animalsWords);
-            console.log("this._currentCategory " + finalProject.currentCategory);
-            console.log("this._antagonistWords " + finalProject.antagonistWords);
-        } else if (wordCategory == "furnitureBtn") {
-            finalProject.currentCategory = finalProject.furnitureWords;
-            finalProject.antagonistWords = finalProject.foodWords;
-            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.clothesWords);
-            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.animalsWords);
-        } else if (wordCategory == "clothesBtn") {
-            finalProject.currentCategory = finalProject.clothesWords;
-            finalProject.antagonistWords = finalProject.furnitureWords;
-            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.foodWords);
-            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.animalsWords);
-        } else if (wordCategory == "animalsBtn") {
-            finalProject.currentCategory = finalProject.animalsWords;
-            finalProject.antagonistWords = finalProject.furnitureWords;
-            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.clothesWords);
-            Array.prototype.push.apply(finalProject.antagonistWords, finalProject.foodWords);
+        //determine categories for collectible finalProject and the antagonist finalProject
+        private _determineCategories(): void {
+            console.log("wordCategory " + wordCategory);
+            if (wordCategory == "foodBtn") {
+                finalProject.currentCategory = finalProject.foodWords;
+                finalProject.antagonistWords = finalProject.furnitureWords;
+                Array.prototype.push.apply(finalProject.antagonistWords, finalProject.clothesWords);
+                Array.prototype.push.apply(finalProject.antagonistWords, finalProject.animalsWords);
+                console.log("this._currentCategory " + finalProject.currentCategory);
+                console.log("this._antagonistWords " + finalProject.antagonistWords);
+            } else if (wordCategory == "furnitureBtn") {
+                finalProject.currentCategory = finalProject.furnitureWords;
+                finalProject.antagonistWords = finalProject.foodWords;
+                Array.prototype.push.apply(finalProject.antagonistWords, finalProject.clothesWords);
+                Array.prototype.push.apply(finalProject.antagonistWords, finalProject.animalsWords);
+            } else if (wordCategory == "clothesBtn") {
+                finalProject.currentCategory = finalProject.clothesWords;
+                finalProject.antagonistWords = finalProject.furnitureWords;
+                Array.prototype.push.apply(finalProject.antagonistWords, finalProject.foodWords);
+                Array.prototype.push.apply(finalProject.antagonistWords, finalProject.animalsWords);
+            } else if (wordCategory == "animalsBtn") {
+                finalProject.currentCategory = finalProject.animalsWords;
+                finalProject.antagonistWords = finalProject.furnitureWords;
+                Array.prototype.push.apply(finalProject.antagonistWords, finalProject.clothesWords);
+                Array.prototype.push.apply(finalProject.antagonistWords, finalProject.foodWords);
+            }
         }
-    }
 
-        
+
 
 
         public update(): void {
@@ -132,13 +132,13 @@ module finalProject {
                 outcome = 2;
                 numOfCollectedWords = scoreboard.score / 100;
                 numOfLivesLost = 3;
-                changeState(finalProject.OVER_STATE);
+                changeState(finalProject.END_STATE);
             }
-                if(scoreboard.score == 1000) {
-                    outcome = 1;
-                    numOfCollectedWords = 10;
-                    numOfLivesLost = 3 - scoreboard.lives;
-                    changeState(finalProject.OVER_STATE);
+            if (scoreboard.score == 1000) {
+                outcome = 1;
+                numOfCollectedWords = 10;
+                numOfLivesLost = 3 - scoreboard.lives;
+                changeState(finalProject.END_STATE);
             }
         }
     }

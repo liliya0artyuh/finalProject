@@ -20,7 +20,8 @@
       private  _rulesButton: finalProject.Button;
       private  _aboutButton: finalProject.Button;
       private  _rect: createjs.Shape;
-      private  _instructionsVisible: boolean = false;
+      private _instructionsVisible: boolean = false;
+      private _isCategorySelected: boolean;
       private  _rulesText: string = "1. Select word category to practise. \n\n2. Move mouse up and down to control collector rectangle. \n\n3. Collect 10 finalProject from selected category to win. \n\n4. Collecting 3 wrong finalProject lead to a loss.";
 
 
@@ -49,9 +50,13 @@
                 name = "YOU";
             }
             console.log("check name after button is clicked " + name);
-            document.getElementById("txtName").style.display = "none";
-            this.removeAllChildren();
-            changeState(finalProject.PLAY_STATE);
+            if (this._isCategorySelected) {
+                document.getElementById("txtName").style.display = "none";
+                this.removeAllChildren();
+                changeState(finalProject.PLAY_STATE);
+            } else {
+                //display message to select a category
+            }
         }
 
         //callback function that allows to respond to button click events
@@ -67,11 +72,26 @@
 
         private _categoryClicked(event: createjs.MouseEvent): void {
             wordCategory = event.target.name;
+            this._isCategorySelected = true;
+            //set isSeceted for all categories to false
+            this._clothesBtn.setIsSelected(false);
+            this._foodBtn.setIsSelected(false);
+            this._furnitureBtn.setIsSelected(false);
+            this._animalsBtn.setIsSelected(false);
+            //set alpha for all buttons to faded 0.5
+            this._clothesBtn.alpha=0.5;
+            this._foodBtn.alpha = 0.5;
+            this._furnitureBtn.alpha = 0.5;
+            this._animalsBtn.alpha = 0.5;
+            //set selected button isSelected to true and alpha to 1.0
+            event.currentTarget.setIsSelected(true);
+            event.currentTarget.alpha = 1.0;
         }
 
 
         //public methods
         public start(): void {
+            this._isCategorySelected = false;
             this.addChild(background);
 
             //add buttons for about and rules
@@ -99,7 +119,7 @@
 
 
             //instantiate and add a start button
-            this._startButton = new finalProject.Button("startButton", finalProject.centerX, 360);
+            this._startButton = new finalProject.Button("startButton", finalProject.centerX, 390);
             this._startButton.setWidth(206);
             this._startButton.centerAlongX();
             this.addChild(this._startButton);
@@ -113,50 +133,58 @@
 
         private _getDetails(): void {
 
-            this._nameLabel = new finalProject.Label("What's your name?", "20px Consolas", "#FFF000", 181, 140, false);
+            this._nameLabel = new finalProject.Label("What's your name?", "20px Consolas", "#FFF000", 206, 140, false);
             this.addChild(this._nameLabel);
 
             document.getElementById("txtName").style.display = "inline";
             console.log("check name " + name);
 
-            this._selectCategoryLabel = new finalProject.Label("Select Category:", "20px Consolas", "#FFF000", 181, 170, false);
+            this._selectCategoryLabel = new finalProject.Label("Select Category:", "20px Consolas", "#FFF000", 206, 175, false);
             this.addChild(this._selectCategoryLabel);
 
             //add category buttons and their labels
-            this._foodBtn = new finalProject.Button("categoryButton", 181, 200);
+            this._foodBtn = new finalProject.Button("categoryButton", 206, 205);
+            this._foodBtn.setIsCategory(true);
+            this._foodBtn.designCategoryButton();
             this._foodBtn.setHeight(61);
             this._foodBtn.setWidth(190);
             this._foodBtn.name = "foodBtn";
             this.addChild(this._foodBtn);
             this._foodBtn.on("click", this._categoryClicked, this);
-            this._foodLabel = new finalProject.Label("FOOD", "30px Consolas", "#000000", 272.5, 231, true);
+            this._foodLabel = new finalProject.Label("FOOD", "30px Consolas", "#000000", 301, 230, true);
             this.addChild(this._foodLabel);
 
-            this._furnitureBtn = new finalProject.Button("categoryButton", 484, 200);
+            this._furnitureBtn = new finalProject.Button("categoryButton", 456, 205);
+            this._furnitureBtn.setIsCategory(true);
+            this._furnitureBtn.designCategoryButton();
             this._furnitureBtn.setHeight(61);
             this._furnitureBtn.setWidth(190);
             this._furnitureBtn.name = "furnitureBtn";
             this.addChild(this._furnitureBtn);
             this._furnitureBtn.on("click", this._categoryClicked, this);
-            this._foodLabel = new finalProject.Label("FURNITURE", "30px Consolas", "#000000", 575.5, 231, true);
+            this._foodLabel = new finalProject.Label("FURNITURE", "30px Consolas", "#000000", 551, 230, true);
             this.addChild(this._foodLabel);
 
-            this._clothesBtn = new finalProject.Button("categoryButton", 181, 300);
+            this._clothesBtn = new finalProject.Button("categoryButton", 206, 290);
+            this._clothesBtn.setIsCategory(true);
+            this._clothesBtn.designCategoryButton();
             this._clothesBtn.setHeight(61);
             this._clothesBtn.setWidth(190);
             this._clothesBtn.name = "clothesBtn";
             this.addChild(this._clothesBtn);
             this._clothesBtn.on("click", this._categoryClicked, this);
-            this._foodLabel = new finalProject.Label("CLOTHES", "30px Consolas", "#000000", 272.5, 331, true);
+            this._foodLabel = new finalProject.Label("CLOTHES", "30px Consolas", "#000000", 301, 315, true);
             this.addChild(this._foodLabel);
 
-            this._animalsBtn = new finalProject.Button("categoryButton", 484, 300);
+            this._animalsBtn = new finalProject.Button("categoryButton", 456, 290);
+            this._animalsBtn.setIsCategory(true);
+            this._animalsBtn.designCategoryButton();
             this._animalsBtn.setHeight(61);
             this._animalsBtn.setWidth(190);
             this._animalsBtn.name = "animalsBtn";
             this.addChild(this._animalsBtn);
             this._animalsBtn.on("click", this._categoryClicked, this);
-            this._foodLabel = new finalProject.Label("ANIMALS", "30px Consolas", "#000000", 575.5, 331, true);
+            this._foodLabel = new finalProject.Label("ANIMALS", "30px Consolas", "#000000", 551, 315, true);
             this.addChild(this._foodLabel);
 
             stage.addChild(this);

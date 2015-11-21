@@ -94,4 +94,3 @@ var finalProject;
     })(finalProject.Scene);
     finalProject.Menu = Menu;
 })(finalProject || (finalProject = {}));
-//# sourceMappingURL=menu.js.map

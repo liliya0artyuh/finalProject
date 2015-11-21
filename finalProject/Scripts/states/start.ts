@@ -8,7 +8,7 @@
 
 module finalProject {
     // menu class
-    export class Menu extends finalProject.Scene {
+    export class Start extends finalProject.Scene {
         // private instance variables
         _introLabel: finalProject.Label;
         _continueButton: finalProject.Button;

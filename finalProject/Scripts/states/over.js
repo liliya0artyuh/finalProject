@@ -59,4 +59,3 @@ var finalProject;
     })(finalProject.Scene);
     finalProject.Over = Over;
 })(finalProject || (finalProject = {}));
-//# sourceMappingURL=over.js.map

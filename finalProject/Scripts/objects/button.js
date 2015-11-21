@@ -16,7 +16,6 @@ var finalProject;
         //constructor
         function Button(pathString, x, y) {
             _super.call(this, assets.loader.getResult(pathString));
-            this._height = 69;
             this.x = x;
             this.y = y;
             this.on("mouseover", this.buttonOver, this);
@@ -28,6 +27,18 @@ var finalProject;
         };
         Button.prototype.setWidth = function (width) {
             this._width = width;
+        };
+        Button.prototype.getIsCategory = function () {
+            return this._isCategory;
+        };
+        Button.prototype.setIsCategory = function (isCategory) {
+            this._isCategory = isCategory;
+        };
+        Button.prototype.getIsSelected = function () {
+            return this._isSelected;
+        };
+        Button.prototype.setIsSelected = function (isSelected) {
+            this._isSelected = isSelected;
         };
         Button.prototype.getHeight = function () {
             return this._height;
@@ -45,11 +56,28 @@ var finalProject;
         //callback function that change the apha transparency of the button
         //mousover event
         Button.prototype.buttonOver = function (event) {
-            event.currentTarget.alpha = 0.8;
+            if (this._isCategory && this._isSelected == false) {
+                event.currentTarget.alpha = 1.0;
+            }
+            else {
+                event.currentTarget.alpha = 0.8;
+            }
         };
         //mouseout event
         Button.prototype.buttonOut = function (event) {
-            event.currentTarget.alpha = 1.0;
+            if (this._isCategory && this._isSelected == false) {
+                event.currentTarget.alpha = 0.5;
+            }
+            else {
+                event.currentTarget.alpha = 1.0;
+            }
+        };
+        //public methods
+        Button.prototype.designCategoryButton = function () {
+            if (this._isCategory) {
+                this.alpha = 0.5;
+                this._isSelected = false;
+            }
         };
         return Button;
     })(createjs.Bitmap);

@@ -23,9 +23,12 @@
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/scene.ts" />
 /// <reference path="../states/instructions.ts" />
-/// <reference path="../states/menu.ts" />
-/// <reference path="../states/over.ts" />
-/// <reference path="../states/game.ts" />
+/// <reference path="../states/start.ts" />
+/// <reference path="../states/end.ts" />
+/// <reference path="../states/score.ts" />
+/// <reference path="../states/level1.ts" />
+/// <reference path="../states/level2.ts" />
+/// <reference path="../states/level3.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../managers/collision.ts" />
 // Global Game Framework Variables
@@ -35,9 +38,12 @@ var stats;
 var state;
 var currentState; // alias for our current state
 // Game variables
-var menuFinalProject;
-var gameFinalProject;
-var overFinalProject;
+var startFinalProject;
+var level1FinalProject;
+var level2FinalProject;
+var level3FinalProject;
+var endFinalProject;
+var scoreFinalProject;
 var instructionFinalProject;
 var name;
 var outcome = 0;
@@ -64,7 +70,7 @@ function init() {
     background = new finalProject.Background("back");
     stage.addChild(background);
     setupStats(); // setup statistics object
-    state = finalProject.MENU_STATE;
+    state = finalProject.START_STATE;
     changeState(state);
 }
 // Main Game Loop
@@ -90,21 +96,20 @@ function setupStats() {
 function changeState(state) {
     //lauch various scenes
     switch (state) {
-        case finalProject.MENU_STATE:
+        case finalProject.START_STATE:
             stage.removeAllChildren();
-            menuFinalProject = new finalProject.Menu();
-            console.log(menuFinalProject);
-            currentState = menuFinalProject;
+            startFinalProject = new finalProject.Start();
+            currentState = startFinalProject;
             break;
-        case finalProject.PLAY_STATE:
+        case finalProject.LEVEL1_STATE:
             stage.removeAllChildren();
-            gameFinalProject = new finalProject.Game();
-            currentState = gameFinalProject;
+            level1FinalProject = new finalProject.Level1();
+            currentState = level1FinalProject;
             break;
-        case finalProject.OVER_STATE:
+        case finalProject.END_STATE:
             stage.removeAllChildren();
-            overFinalProject = new finalProject.Over(outcome);
-            currentState = overFinalProject;
+            endFinalProject = new finalProject.End(outcome);
+            currentState = endFinalProject;
             break;
         case finalProject.INSTRUCTIONS_STATE:
             stage.removeAllChildren();

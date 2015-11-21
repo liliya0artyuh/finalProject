@@ -7,7 +7,7 @@
 
 module finalProject {
     // menu class
-    export class Over extends finalProject.Scene {
+    export class End extends finalProject.Scene {
         // private instance variables
         _endLabel: finalProject.Label;
         _againButton: finalProject.Button;
@@ -28,7 +28,7 @@ module finalProject {
         //private method
         //callback function that allows to respond to button click events
         private _buttonClicked(event: createjs.MouseEvent): void {
-            changeState(finalProject.MENU_STATE);
+            changeState(finalProject.START_STATE);
         }
 
         //public methods

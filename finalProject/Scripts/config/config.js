@@ -7,10 +7,14 @@
 var finalProject;
 (function (finalProject) {
     // state constants
-    finalProject.MENU_STATE = 0;
+    finalProject.START_STATE = 0;
     finalProject.PLAY_STATE = 1;
-    finalProject.OVER_STATE = 2;
+    finalProject.END_STATE = 2;
     finalProject.INSTRUCTIONS_STATE = 3;
+    finalProject.LEVEL1_STATE = 4;
+    finalProject.LEVEL2_STATE = 5;
+    finalProject.LEVEL3_STATE = 6;
+    finalProject.SCORE_STATE = 7;
     finalProject.numOfAntiWords = 3;
     finalProject.centerX = 424;
     finalProject.collectorWidth = 227;
