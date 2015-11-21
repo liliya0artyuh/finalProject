@@ -41,7 +41,7 @@
 
         //private method
         //callback function that allows to respond to start button click events
-        private _startClicked(event: createjs.MouseEvent): void {
+        private _playClicked(event: createjs.MouseEvent): void {
             console.log("event.target " + event.target);
             createjs.Sound.play("soundtrack");
             //get the name of user
@@ -53,14 +53,16 @@
             if (this._isCategorySelected) {
                 document.getElementById("txtName").style.display = "none";
                 this.removeAllChildren();
-                changeState(finalProject.PLAY_STATE);
+                changeState(finalProject.LEVEL1_STATE);
+                console.log("category was selected");
             } else {
                 //display message to select a category
+                console.log("didn't recognize that category was selected");
             }
         }
 
         //callback function that allows to respond to button click events
-        private _menuClicked(event: createjs.MouseEvent): void {
+        private _rulesClicked(event: createjs.MouseEvent): void {
             //check if lable is already displayed
             if (this._instructionsContainer.visible == true) {
                 this._instructionsContainer.visible = false;
@@ -99,7 +101,7 @@
             this._rulesButton.setWidth(183);
             this._rulesButton.centerAlongX();
             this._rulesButton.name = "rulesBtn";
-            this._rulesButton.on("click", this._menuClicked, this);
+            this._rulesButton.on("click", this._rulesClicked, this);
             this.addChild(this._rulesButton);
 
             //display categories
@@ -123,7 +125,7 @@
             this._startButton.setWidth(206);
             this._startButton.centerAlongX();
             this.addChild(this._startButton);
-            this._startButton.on("click", this._startClicked, this);
+            this._startButton.on("click", this._playClicked, this);
 
             //add this menu container to the stage
             stage.addChild(this);
