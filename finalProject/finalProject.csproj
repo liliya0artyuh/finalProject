@@ -129,8 +129,8 @@
     <TypeScriptCompile Include="Scripts\states\level2.ts" />
     <TypeScriptCompile Include="Scripts\states\level3.ts" />
     <TypeScriptCompile Include="Scripts\states\start.ts" />
-    <TypeScriptCompile Include="Scripts\states\end.ts" />
     <TypeScriptCompile Include="Scripts\states\score.ts" />
+    <TypeScriptCompile Include="Scripts\states\end.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\easeljs\easeljs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\es6-promise\es6-promise.d.ts" />

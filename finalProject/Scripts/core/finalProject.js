@@ -51,6 +51,7 @@ var wordCategory;
 var background;
 var numOfCollectedWords;
 var numOfLivesLost;
+var tickCounter;
 //Game managers
 var assets;
 var collision;
@@ -67,6 +68,7 @@ function init() {
     stage.enableMouseOver(20); //enable mouse events
     createjs.Ticker.setFPS(60); // set frame rate to 60 frames per second
     createjs.Ticker.on("tick", gameLoop, this); // update gameLoop every frame
+    tickCounter = 0;
     background = new finalProject.Background("back");
     stage.addChild(background);
     setupStats(); // setup statistics object
@@ -76,6 +78,7 @@ function init() {
 // Main Game Loop
 function gameLoop(event) {
     stats.begin(); //begin measuring
+    tickCounter++;
     background.update();
     currentState.update();
     stage.update(); // redraw/refresh stage every frame
